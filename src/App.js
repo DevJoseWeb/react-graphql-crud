@@ -4,7 +4,6 @@ import AddUser from './AddUser';
 import EditUser from './EditUser';
 import UsersList from './UsersList';
 import Alert from './Alert';
-import './App.css';
 
 class App extends Component {
 
