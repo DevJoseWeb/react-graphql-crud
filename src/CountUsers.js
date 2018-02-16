@@ -1,0 +1,22 @@
+import React, { Component } from 'react';
+import { graphql } from 'react-apollo';
+import allUsersQuery from './queries/AllUsers.js'
+
+class CountUsers extends Component {
+  render() {
+    const {loading, error, allUsers} = this.props.data;
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+    if (error) {
+      return <div>${error}</div>;
+    }
+    return (
+      <span className="badge badge-secondary">
+        Users Count: { allUsers.length }
+      </span>
+    );
+  }
+}
+
+export default graphql(allUsersQuery)(CountUsers);
