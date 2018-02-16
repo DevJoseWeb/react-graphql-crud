@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import allUsersQuery from './queries/AllUsers.js'
+import { allUsersQuery } from './queries/users'
 
 class CountUsers extends Component {
   render() {

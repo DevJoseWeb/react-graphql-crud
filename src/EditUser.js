@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import editUserQuery from './queries/EditUser';
+import { updateUserQuery } from './queries/users';
 import UserForm from './UserForm';
 
 class EditUser extends Component {
@@ -21,7 +21,7 @@ class EditUser extends Component {
     })
     .then((res) => {
       alert({
-        success: 'The user was edited!'
+        success: 'The user was updated!'
       });
       close();
     }).catch((error) => {
@@ -48,4 +48,4 @@ class EditUser extends Component {
   }
 }
 
-export default graphql(editUserQuery)(EditUser);
+export default graphql(updateUserQuery)(EditUser);

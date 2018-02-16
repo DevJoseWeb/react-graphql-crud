@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import addUserQuery from './queries/AddUser.js';
-import allUsersQuery from './queries/AllUsers.js';
+import { allUsersQuery, createUserQuery } from './queries/users';
 import UserForm from './UserForm';
 
 class AddUser extends Component {
@@ -19,7 +18,7 @@ class AddUser extends Component {
     })
     .then((res) => {
       alert({
-        success: 'The user was inserted!'
+        success: 'The user was created!'
       });
       close();
     }).catch((error) => {
@@ -46,4 +45,4 @@ class AddUser extends Component {
   }
 }
 
-export default graphql(addUserQuery)(AddUser);
+export default graphql(createUserQuery)(AddUser);

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import allUsersQuery from './queries/AllUsers.js';
-import deleteUserQuery from './queries/DeleteUser.js';
+import { allUsersQuery, deleteUserQuery } from './queries/users';
 
 class UsersListItem extends Component {
 
