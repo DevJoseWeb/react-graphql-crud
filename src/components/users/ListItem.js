@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo';
-import { allUsersQuery, deleteUserQuery } from '../../queries/users';
+import { graphql, compose } from 'react-apollo';
+import { allUsersQuery, deleteUserQuery, likeUserQuery } from '../../queries/users';
 
 class ListItem extends Component {
 
-  deleteUser = (e) => {
-    const { mutate, user, alert } = this.props;
-    mutate({
+  handleDeleteUser = (e) => {
+    const { deleteUser, user, alert } = this.props;
+    deleteUser({
       variables: {
         id: user.id,
       },
@@ -23,7 +23,27 @@ class ListItem extends Component {
     });
   }
 
-  editUser = () => {
+  handlelikeUser = (e) => {
+    const { likeUser, user, alert } = this.props;
+    likeUser({
+      variables: {
+        id: user.id,
+        likes: user.likes + 1
+      },
+      refetchQueries: [ { query: allUsersQuery }]
+    })
+    .then((res) => {
+      alert({
+        success: 'The user was liked!'
+      });
+    }).catch((error) => {
+      alert({
+        danger: error.message
+      });
+    });
+  }
+
+  handleEditUser = () => {
     this.props.editUser(this.props.user);
   }
 
@@ -31,13 +51,18 @@ class ListItem extends Component {
     const user = this.props.user;
     return (
       <tr>
-        <td><button onClick={this.editUser} className="btn btn-primary">Edit</button></td>
-        <td><button onClick={this.deleteUser} className="btn btn-danger">X</button></td>
+        <td><button onClick={this.handleEditUser} className="btn btn-primary">Edit</button></td>
+        <td><button onClick={this.handleDeleteUser} className="btn btn-danger">X</button></td>
         <td>{user.name}</td>
         <td>{user.email}</td>
+        <td>{user.likes}</td>
+        <td><button onClick={this.handlelikeUser} className="btn btn-danger">Like</button></td>
       </tr>
     );
   }
 }
 
-export default graphql(deleteUserQuery)(ListItem);
+export default compose(
+  graphql(deleteUserQuery, { name: 'deleteUser' }),
+  graphql(likeUserQuery, { name: 'likeUser' })
+)(ListItem);

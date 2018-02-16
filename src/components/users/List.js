@@ -20,6 +20,8 @@ class List extends Component {
             <th>Exclude</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Likes</th>
+            <th>Like</th>
           </tr>
           { allUsers.map(user => <ListItem
             key={user.id}

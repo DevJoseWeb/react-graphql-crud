@@ -6,6 +6,7 @@ export const allUsersQuery = gql`
       id
       name
       email
+      likes
     }
   }
 `;
@@ -26,6 +27,15 @@ export const updateUserQuery = gql`
       id
       name
       email
+    }
+  }
+`;
+
+export const likeUserQuery = gql`
+  mutation updateUser($id: ID!, $likes: Int!) {
+    updateUser(id: $id, likes: $likes) {
+      id
+      likes
     }
   }
 `;
