@@ -47,3 +47,20 @@ export const deleteUserQuery = gql`
     }
   }
 `;
+
+export const likedUserQuery = gql`
+  subscription likedUser {
+    User(
+      filter: {
+        mutation_in: [UPDATED]
+        updatedFields_contains: "likes"
+      }
+    ) {
+      mutation
+      node {
+        id
+        likes
+      }
+    }
+  }
+`

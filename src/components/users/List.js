@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import { allUsersQuery } from '../../queries/users';
+import { allUsersQuery, likedUserQuery } from '../../queries/users';
 import ListItem from './ListItem.js'
 
 class List extends Component {
+
+  componentWillMount() {
+    this.props.data.subscribeToMore({
+      document: likedUserQuery,
+      updateQuery: (prev, {subscriptionData}) => {
+        if (!subscriptionData.data) {
+          return prev;
+        }
+        console.log(subscriptionData.data.User.node);
+      }
+    });
+  }
+
   render() {
     const {loading, error, allUsers} = this.props.data;
     if (loading) {
