@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import CountUsers from './CountUsers';
-import AddUser from './AddUser';
-import EditUser from './EditUser';
-import UsersList from './UsersList';
+import UsersCount from './components/users/Count';
+import UsersAdd from './components/users/Add';
+import UsersEdit from './components/users/Edit';
+import UsersList from './components/users/List';
 import Alert from './Alert';
 
 class App extends Component {
@@ -56,16 +56,16 @@ class App extends Component {
             type="button"
             className="btn btn-primary"
             onClick={this.addUser}>Add User</button>
-          <CountUsers />
+          <UsersCount />
         </div>
         <UsersList
           editUser={this.editUser}
           alert={this.alert} />
-        <AddUser
+        <UsersAdd
           user={this.state.addUser}
           close={this.close}
           alert={this.alert} />
-        <EditUser
+        <UsersEdit
           user={this.state.editUser}
           close={this.close}
           alert={this.alert} />

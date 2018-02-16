@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import { allUsersQuery } from './queries/users'
+import { allUsersQuery } from '../../queries/users'
 
-class CountUsers extends Component {
+class Count extends Component {
   render() {
     const {loading, error, allUsers} = this.props.data;
     if (loading) {
@@ -19,4 +19,4 @@ class CountUsers extends Component {
   }
 }
 
-export default graphql(allUsersQuery)(CountUsers);
+export default graphql(allUsersQuery)(Count);

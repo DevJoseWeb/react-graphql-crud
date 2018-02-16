@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import { updateUserQuery } from './queries/users';
-import UserForm from './UserForm';
+import { updateUserQuery } from '../../queries/users';
+import Form from './Form';
 
-class EditUser extends Component {
+class Edit extends Component {
 
   state = {
     alert: ''
@@ -37,7 +37,7 @@ class EditUser extends Component {
   render() {
 
     return (
-      <UserForm
+      <Form
         modalId="editUserModal"
         title="Edit User"
         handleSubmit={this.handleSubmit}
@@ -48,4 +48,4 @@ class EditUser extends Component {
   }
 }
 
-export default graphql(updateUserQuery)(EditUser);
+export default graphql(updateUserQuery)(Edit);

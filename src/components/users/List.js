@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import { allUsersQuery } from './queries/users';
-import UsersListItem from './UsersListItem.js'
+import { allUsersQuery } from '../../queries/users';
+import ListItem from './ListItem.js'
 
-class UsersList extends Component {
+class List extends Component {
   render() {
     const {loading, error, allUsers} = this.props.data;
     if (loading) {
@@ -21,7 +21,7 @@ class UsersList extends Component {
             <th>Name</th>
             <th>Email</th>
           </tr>
-          { allUsers.map(user => <UsersListItem
+          { allUsers.map(user => <ListItem
             key={user.id}
             user={user}
             editUser={this.props.editUser}
@@ -32,4 +32,4 @@ class UsersList extends Component {
   }
 }
 
-export default graphql(allUsersQuery)(UsersList);
+export default graphql(allUsersQuery)(List);

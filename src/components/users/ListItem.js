@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import { allUsersQuery, deleteUserQuery } from './queries/users';
+import { allUsersQuery, deleteUserQuery } from '../../queries/users';
 
-class UsersListItem extends Component {
+class ListItem extends Component {
 
   deleteUser = (e) => {
     const { mutate, user, alert } = this.props;
@@ -40,4 +40,4 @@ class UsersListItem extends Component {
   }
 }
 
-export default graphql(deleteUserQuery)(UsersListItem);
+export default graphql(deleteUserQuery)(ListItem);
