@@ -9,10 +9,7 @@ class List extends Component {
     this.props.data.subscribeToMore({
       document: likedUserQuery,
       updateQuery: (prev, {subscriptionData}) => {
-        if (!subscriptionData.data) {
-          return prev;
-        }
-        console.log(subscriptionData.data.User.node);
+        return prev;
       }
     });
   }

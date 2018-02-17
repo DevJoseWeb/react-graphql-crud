@@ -56,7 +56,7 @@ class ListItem extends Component {
         <td>{user.name}</td>
         <td>{user.email}</td>
         <td>{user.likes}</td>
-        <td><button onClick={this.handlelikeUser} className="btn btn-danger">Like</button></td>
+        <td><button onClick={this.handlelikeUser} className="btn btn-success">Like</button></td>
       </tr>
     );
   }
