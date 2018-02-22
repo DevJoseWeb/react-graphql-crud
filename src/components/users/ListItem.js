@@ -30,6 +30,14 @@ class ListItem extends Component {
         id: user.id,
         likes: user.likes + 1
       },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        updateUser: {
+          __typename: 'User',
+          id: user.id,
+          likes: user.likes + 1,
+        },
+      },
       refetchQueries: [ { query: allUsersQuery }]
     })
     .then((res) => {
